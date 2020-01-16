@@ -1,0 +1,27 @@
+.btn {
+    margin-bottom: 15px;
+}
+
+/*Required*/
+@media (max-width: 576px) {
+    .modal-dialog.modal-dialog-slideout {
+        width: 80%;
+    }
+}
+
+.modal-dialog-slideout {
+    min-height: 100%;
+    margin: 0 auto 0 0;
+    background: #fff;
+}
+
+.modal.fade .modal-dialog.modal-dialog-slideout {
+    -webkit-transform: translate(-100%, 0);
+    transform: translate(-100%, 0);
+}
+
+.modal.fade.show .modal-dialog.modal-dialog-slideout {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    flex-flow: column;
+}

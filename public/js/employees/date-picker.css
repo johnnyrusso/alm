@@ -1,0 +1,3 @@
+#date_work.disabled::-webkit-calendar-picker-indicator {
+  display: none;
+}

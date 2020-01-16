@@ -1,0 +1,178 @@
+* {
+    box-sizing: border-box;
+}
+
+#last-row {
+    display: flex;
+    justify-content: center;
+}
+
+#days_ul {
+    display: inherit;
+    margin-right: 10px;
+}
+
+#submit {
+    width: 20%;
+}
+
+#added_locations {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+}
+
+#days_ul>li {
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10px;
+}
+
+#job_location {
+    height: inherit;
+}
+
+.exists-error {
+    color: red;
+}
+
+.added-job-uls {
+    display: flex;
+    flex-direction: row;
+}
+
+.task-input-group {
+    display: flex;
+    margin-left: 10%;
+}
+
+.task-hours {
+    width: 4rem;
+}
+
+hr.divider {
+    width: 90%;
+    border: 0;
+    border-bottom: 1px dashed #ccc;
+    background: #999;
+}
+
+hr.ending-divider {
+    width: 90%;
+    overflow: visible;
+    /* For IE */
+    height: 30px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px 0 0 0;
+    border-radius: 20px;
+}
+
+.myForm .day-info-button {
+    width: 1rem;
+    margin-left: 50%;
+    padding: 0;
+}
+
+.weekday-group {
+    width: 1%;
+}
+
+.button-container {
+    width: 100px;
+}
+
+.day-span {
+    margin-right: 20px;
+    margin-right: auto;
+}
+
+.added-job-heading {
+    font-family: fantasy;
+    font-weight: 400;
+    font-size: 1.4rem;
+}
+
+.days-worked-buttons {
+    display: flex;
+}
+
+.added-job-uls {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.myForm {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background-color: beige;
+    border-radius: 3px;
+    padding: 1em;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.column {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.input-group {
+    display: flex;
+    flex-grow: 0;
+}
+
+.input-group>label {
+    margin-right: 1em;
+    padding: .5em 0;
+}
+
+.myForm input, .myForm select {
+    flex: 6;
+    padding: .5em;
+    margin-bottom: 1em;
+}
+
+.myForm button {
+    padding: 1em;
+    background: gray;
+    color: white;
+    border: 0;
+}
+
+.myForm fieldset {
+    border: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+button.confirm-task {
+    height: 33px;
+    padding: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px;
+    border-color: burlywood;
+    border-style: solid;
+}
+
+button.edit-task {
+    height: 33px;
+    padding: 10px;
+    border: 1px;
+    border-color: burlywood;
+    border-style: solid;
+}

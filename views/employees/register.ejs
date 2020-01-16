@@ -1,0 +1,118 @@
+<%- include ('./partials/staff_header') -%>
+
+
+<body>
+<div class="container">
+<form  class="form ml-auto mt-5" action="./register" method="POST">
+    <fieldset>
+        <!-- Form Name -->
+        <legend>Employee Registration</legend>
+        <%- include('./partials/messages') -%>
+
+        <div class="jumbotron border border-dark">
+
+            <!-- Email input -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="email">Email</label>
+                <div class="col-md-4">
+                    <input id="email" name="email" type="text" placeholder="email..." class="form-control input-md" value="<%= typeof email != 'undefined' ? email : '' %>" autocomplete="username" required="">
+                    <small><span class="help-block">Enter valid email</span></small>
+                </div>
+            </div>
+            <!-- Password input -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="password">Password</label>
+                <div class="col-md-4">
+                    <input id="password" name="password" type="password" placeholder="password..." class="form-control input-md" autocomplete="new-password" required="">
+                    <small><span class="help-block">Must contain both uppercase and lowercase letters and one or more numbers.</span></small>
+                </div>
+            </div>
+            <!-- Confirm password input -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="password2">Confirm Password</label>
+                <div class="col-md-4">
+                    <input id="password2" name="password2" type="password" placeholder="confirm password..." class="form-control input-md" autocomplete="new-password" required="">
+                    <small><span class="help-block">Must contain both uppercase and lowercase letters and one or more numbers.</span></small>
+                </div>
+            </div>
+
+        <!-- F. Name input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="firstName">First Name</label>
+                <div class="col-md-4">
+                    <input id="firstName" name="firstName" type="text" placeholder="first name..." class="form-control input-md" value="<%= typeof firstName != 'undefined' ? firstName : '' %>" required="">
+                    <small><span class="help-block">Your legal last name</span></small>
+                </div>
+            </div>
+
+                <!-- L. Name input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="lastName">Last Name</label>
+                <div class="col-md-4">
+                    <input id="lastName" name="lastName" type="text" placeholder="last name..." class="form-control input-md" value="<%= typeof lastName != 'undefined' ? lastName : '' %>" required="">
+                    <small><span class="help-block">Your legal last name</span></small>
+                </div>
+            </div>
+
+
+            <!-- DOB input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">Date of Birth</label>
+            <div class="col-md-4">
+                <input id="dob" name="dob" type="date" placeholder="date of birth" class="form-control input-md" value="<%= typeof dob != 'undefined' ? dob : '' %>" required="">
+                <small><span class="help-block">Choose the month, day, and year you were born</span></small>
+            </div>
+        </div>
+
+
+             <div class="form-group">
+                 <label for="phone" class="col-md-4 control-label">Phone Number</label>
+                 <div class="col-md-4">
+
+                 <input type="tel" id="phone" name="phone" pattern="[0-9]{3}[0-9]{3-[0-9]{4}" class="form-control input-md" value="<%= typeof phone != 'undefined' ? phone : '' %>" required>
+
+                 <small><span class="help-block">Format: 1234567890</span></small>
+             </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4"><h1>Address</h1></div>
+            </div>
+            <!-- L. Name input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="address">Address</label>
+                <div class="col-md-4">
+                    <input id="address" name="address" type="text" placeholder="address..." class="form-control input-md" value="<%= typeof address != 'undefined' ? address : '' %>" required="">
+                    <small><span class="help-block">Your street and house number</span></small>
+                </div>
+            </div>
+            <!-- City input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="city">City</label>
+                <div class="col-md-4">
+                    <input id="city" name="city" type="text" placeholder="last name..." class="form-control input-md" value="<%= typeof city != 'undefined' ? city : '' %>" required="">
+                    <small><span class="help-block">The city in which you live</span></small>
+                </div>
+            </div>
+
+            <!-- Zip code input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="zip">Zip Code</label>
+                <div class="col-md-4">
+                    <input id="zip" name="zip" type="number" maxlength="5" placeholder="xxxxx" class="form-control input-md" value="<%= typeof zip != 'undefined' ? zip : '' %>" required="">
+                    <small><span class="help-block">Your city's zip code.</span></small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-4">
+                     <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+                </div>
+            </div>
+
+
+    </fieldset>
+</form>
+</div>
+
+<%- include ('./partials/staff_footer') -%>

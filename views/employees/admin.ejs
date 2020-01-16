@@ -1,0 +1,46 @@
+<%- include ('./partials/admin_header') -%>
+
+<div class="container mt-5 pt-5">
+    <div class="row">
+    <div class="col-md-3">
+      <div class="card-counter primary">
+        <i class="fa fa-code-fork"></i>
+        <span class="count-numbers">12</span>
+        <span class="count-name">Timesheets</span>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-counter danger">
+        <i class="fa fa-ticket"></i>
+        <span class="count-numbers">?</span>
+        <span class="count-name">Receipts</span>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-counter success">
+        <i class="fa fa-database"></i>
+        <span class="count-numbers">?</span>
+        <span class="count-name">Finances</span>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card-counter info">
+        <a href="/employees/admin/viewStaff" class="text-white d-block">
+            <i class="fa fa-users"></i>
+            <span class="count-numbers text-white"><%= employeeCount %></span>
+            <span class="count-name">Staff</span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<%- include ('./partials/staff_footer') -%>
+	</body>
+</html>

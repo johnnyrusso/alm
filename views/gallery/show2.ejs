@@ -1,0 +1,94 @@
+<%- include ('../partials/header') %>
+<link rel="stylesheet" href="/public/css/glightbox.css">
+<link rel="stylesheet" href="/public/css/cards-gallery.css">
+
+
+<div class="container gallery-block cards-gallery">
+    <div class="row gallery">
+        <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h2 class="display-3 text-center page-heading">Gallery</h2>
+            <div class="text-center">
+                <button class="btn btn-default filter-button active" id="all" onclick="call(this.id)">All</button>
+                <button class="btn btn-default filter-button" id="fencing" onclick="call(this.id)">Fencing</button>
+                <button class="btn btn-default filter-button" id="landscaping" onclick="call(this.id)">Landscaping</button>
+                <button class="btn btn-default filter-button" id="construction" onclick="call(this.id)">Construction</button>
+                <button class="btn btn-default filter-button" id="demolition" onclick="call(this.id)">Demolition</button>
+                <button class="btn btn-default filter-button" id="custom" onclick="call(this.id)">Custom</button>
+            </div>
+        </div>
+
+        <a href="/public/img/gallery/fence.jpg"
+           class="glightbox gallery_product col-6 col-lg-4 col-md-4 col-sm-4 col-xs-6 filter fencing">
+            <img class="img-gallery img-fluid" src="/public/img/gallery/fence.jpg">
+        </a>
+        <a href="/public/img/gallery/gazebo.jpg"
+           class="glightbox gallery_product col-6 col-lg-4 col-md-4 col-sm-4 col-xs-6 filter custom">
+            <img class="img-gallery" src="/public/img/gallery/gazebo.jpg">
+        </a>
+        <a href="/public/img/gallery/elijahs_siding.jpg"
+           class="glightbox gallery_product col-6 col-lg-4 col-md-4 col-sm-4 col-xs-6 filter construction">
+            <img class="img-gallery" src="/public/img/gallery/elijahs_siding.jpg">
+        </a>
+        <a href="/public/img/gallery/ph-bed.jpg"
+           class="glightbox gallery_product col-6 col-lg-4 col-md-4 col-sm-4 col-xs-6 filter landscaping">
+            <img class="img-gallery" src="/public/img/gallery/ph-bed.jpg">
+        </a>
+        <a href="/public/img/gallery/house.jpg"
+           class="glightbox gallery_product col-6 col-lg-4 col-md-4 col-sm-4 col-xs-6 filter construction">
+            <img class="img-gallery" src="/public/img/gallery/house.jpg">
+        </a>
+        <a href="/public/img/gallery/pos_cabinet.jpg"
+           class="glightbox gallery_product col-6 col-lg-4 col-md-4 col-sm-4 col-xs-6 filter custom">
+            <img class="img-gallery" src="/public/img/gallery/pos_cabinet.jpg">
+        </a>
+        <a href="/public/img/gallery/framing_inside.jpg"
+           class="glightbox gallery_product col-6 col-lg-4 col-md-4 col-sm-4 col-xs-6 filter construction">
+            <img class="img-gallery" src="/public/img/gallery/framing_inside.jpg">
+        </a>
+        <a href="/public/img/gallery/truck-flower.jpg"
+           class="glightbox gallery_product col-6 col-lg-4 col-md-4 col-sm-4 col-xs-6 filter landscaping">
+            <img class="img-gallery" src="/public/img/gallery/truck-flower.jpg">
+        </a>
+        <a href="/public/img/gallery/catwalk.jpg"
+           class="glightbox gallery_product col-6 col-lg-4 col-md-4 col-sm-4 col-xs-6 filter custom">
+            <img class="img-gallery" src="/public/img/gallery/catwalk.jpg">
+        </a>
+        <a href="/public/img/gallery/justin_daughter_machine.jpg"
+           class="glightbox gallery_product col-6 col-lg-4 col-md-4 col-sm-4 col-xs-6 filter demolition">
+            <img class="img-gallery" src="/public/img/gallery/justin_daughter_machine.jpg">
+        </a>
+        <a href="/public/img/gallery/framing_with_ppl.jpg"
+           class="glightbox gallery_product col-6 col-lg-4 col-md-4 col-sm-4 col-xs-6 filter construction">
+            <img class="img-gallery" src="/public/img/gallery/framing_with_ppl.jpg">
+        </a>
+        <a href="/public/img/gallery/mums.jpg"
+           class="glightbox gallery_product col-6 col-lg-4 col-md-4 col-sm-4 col-xs-6 filter landscaping">
+            <img class="img-gallery" src="/public/img/gallery/mums.jpg">
+        </a>
+        <a href="/public/img/gallery/fence-cars.jpg"
+           class="glightbox gallery_product col-6 col-lg-4 col-md-4 col-sm-4 col-xs-6 filter fencing">
+            <img class="img-gallery img-fluid" src="/public/img/gallery/fence-cars.jpg">
+        </a>
+        <a href="/public/img/gallery/framing_barn_from_afar.jpg"
+           class="glightbox gallery_product col-6 col-lg-4 col-md-4 col-sm-4 col-xs-6 filter construction">
+            <img class="img-gallery" src="/public/img/gallery/framing_barn_from_afar.jpg">
+        </a>
+        <a href="/public/img/gallery/justin_pool_machine.jpg"
+           class="glightbox gallery_product col-6 col-lg-4 col-md-4 col-sm-4 col-xs-6 filter demolition">
+            <img class="img-gallery" src="/public/img/gallery/justin_pool_machine.jpg">
+        </a>
+        <a href="/public/img/gallery/flower-bed.jpg"
+           class="glightbox gallery_product col-6 col-lg-4 col-md-4 col-sm-4 col-xs-6 filter landscaping">
+            <img class="img-gallery" src="/public/img/gallery/flower-bed.jpg">
+        </a>
+        <a href="/public/img/gallery/fence-working.jpg"
+           class="glightbox gallery_product col-6 col-lg-4 col-md-4 col-sm-4 col-xs-6 filter construction">
+            <img class="img-gallery" src="/public/img/gallery/fence-working.jpg">
+        </a>
+    </div>
+</div>
+<%- include ('../partials/footer') %>
+
+<script src="/public/js/glightbox.min.js"></script>
+<!-- Initialize -->
+<script src="/public/js/index.js"></script>
