@@ -1,11 +1,11 @@
 <%- include ('./partials/staff_header') -%>
 <div class="wrapper">
-
-
   <div class="profile-card js-profile-card">
 
     <div class="profile-card__cnt js-profile-cnt">
-      <div class="profile-card__name mt-5"><h4><%=firstName%></h4></div>
+      <div class="profile-card__name mt-5">
+        <h4><%=firstName%></h4>
+      </div>
       <div class="profile-card__txt"></div>
       <div class="profile-card-loc">
 
@@ -14,15 +14,18 @@
       <div class="profile-card-inf">
         <div class="profile-card-inf__item">
           <div class="profile-card-inf__title">
-          <a href="#current_timesheet" class="btn btn-sm btn-outline-info timesheet" id="#current_timesheet" name="<%= row[0].week_ending %>" data-toggle="modal" role="button"><%=row[0].week_ending%></a>
-            </div>
+            <% if (row.length > 0) { %>
+            <a href="#current_timesheet" class="btn btn-sm btn-outline-info timesheet" id="#current_timesheet" name="<%= row[0].week_ending %>" data-toggle="modal"
+              role="button"><%=row[0].week_ending%></a>
+            <% } %>
+          </div>
           <div class="profile-card-inf__txt">Current Timesheet</div>
 
         </div>
 
         <div class="profile-card-inf__item">
           <div class="profile-card-inf__title">$10/hr<i class="fas fa-cash-register"></i></div>
-          <div class="profile-card-inf__txt">Salary</div> 
+          <div class="profile-card-inf__txt">Salary</div>
         </div>
 
         <div class="profile-card-inf__item">
@@ -36,37 +39,37 @@
         </div>
       </div>
 
-      </div>
-
     </div>
 
-        <div id="current_timesheet" class="modal mt-5" data-easein="flash" tabindex="-1" role="dialog" aria-labelledby="costumModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+  </div>
 
-                        </button>
-                        <h4 class="modal-title">
-                            Timesheet
-                        </h4>
-                    </div>
-                    <div class="modal-body">
-                        <p id="timesheet_data">
+  <div id="current_timesheet" class="modal mt-5" data-easein="flash" tabindex="-1" role="dialog" aria-labelledby="costumModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">
-                                            Close
-                                        </button>
-                        <button class="btn btn-primary">
-                                            Save changes
-                                        </button>
-                    </div>
-                </div>
-            </div>
+          </button>
+          <h4 class="modal-title">
+            Timesheet
+          </h4>
         </div>
+        <div class="modal-body">
+          <p id="timesheet_data">
+
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+            Close
+          </button>
+          <button class="btn btn-primary">
+            Save changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -81,47 +84,52 @@
     let $this = $(this);
 
     $.ajax({
-        type: 'GET',
-        url: '/employees/timesheets/view/current',
-        dataType: "json",
-        data: {week_ending: $this.attr('name')},
-        success: function(result) {
-          let timesheet = result.rows;
-          let daysWorked = result.daysWorked;
-          let locationsWorked = result.locationsWorked;
+      type: 'GET',
+      url: '/employees/timesheets/view/current',
+      dataType: "json",
+      data: {
+        week_ending: $this.attr('name')
+      },
+      success: function (result) {
+        let timesheet = result.rows;
+        let daysWorked = result.daysWorked;
+        let locationsWorked = result.locationsWorked;
 
-          console.log(locationsWorked)
-          // timesheet.forEach(item => {
-          //
-          // })
-          if($('#timesheet_data').children().length === 0) {
-            $('#timesheet_data').append(`<h5>${timesheet[0].week_ending}</h5>`)
+        console.log(locationsWorked)
+        // timesheet.forEach(item => {
+        //
+        // })
+        if ($('#timesheet_data').children().length === 0) {
+          $('#timesheet_data').append(`<h5>${timesheet[0].week_ending}</h5>`)
           daysWorked.forEach(day => {
 
             $('#timesheet_data').append(`<ul class="list-group"><li class="list-group-item list-group-item-primary">${day}</li>`)
             timesheet.forEach((item, index, self) => {
 
-              if(moment(item.date_worked).format('dddd') === day) {
-                  if($('#' + item.location + '_' + day).length === 0) {
-                    $('#timesheet_data').append(`<ul class="list-group"><li class="list-group-item float-right list-group-item-info"><span id="${item.location}_${day}" class="float-left">${item.location}</span></li>`)
-                      for(let i =0; i < timesheet.length; i++) {
+              if (moment(item.date_worked).format('dddd') === day) {
+                if ($('#' + item.location + '_' + day).length === 0) {
+                  $('#timesheet_data').append(
+                    `<ul class="list-group">
+                      <li id="${item.location}_${day}+"_task" class="list-group-item float-right list-group-item-info"><span id="${item.location}_${day}" class="float-left">${item.location}</span></li>
+                    `
+                  )
+                  for (let i = 0; i < timesheet.length; i++) {
+                    if ()
+                  }
 
-                      }
+                }
+              }
 
-                  }  
-                     }
-         
-                  
 
-              });
+
+            });
 
           });
 
         }
-        
 
-        }
+
+      }
     })
   });
-
 </script>

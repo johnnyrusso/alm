@@ -1,5 +1,6 @@
 {
     "workbench.colorCustomizations": {
+        "activityBarBadge.background": "#327828",
         "list.activeSelectionForeground": "#00BCD4",
         "list.inactiveSelectionForeground": "#00BCD4",
         "list.highlightForeground": "#00BCD4",
@@ -20,19 +21,17 @@
         "editor.findMatchBorder": "#00BCD4",
         "selection.background": "#00BCD440",
         "tab.unfocusedActiveBorder": "#fff0",
-        "activityBar.background": "#511b22",
         "activityBar.activeBorder": "#327828",
-        "activityBar.foreground": "#e7e7e7",
         "activityBar.inactiveForeground": "#e7e7e799",
-        "activityBarBadge.background": "#327828",
         "activityBarBadge.foreground": "#e7e7e7",
-        "titleBar.activeBackground": "#2b0e12",
         "titleBar.inactiveBackground": "#2b0e1299",
-        "titleBar.activeForeground": "#e7e7e7",
         "titleBar.inactiveForeground": "#e7e7e799",
-        "statusBar.background": "#2b0e12",
-        "statusBarItem.hoverBackground": "#511b22",
-        "statusBar.foreground": "#e7e7e7"
+        "statusBarItem.hoverBackground": "#511b22"
     },
-    "peacock.color": "#2b0e12"
+    "peacock.color": "#2b0e12",
+    "favorites.resources": [
+        "views\\employees",
+        "views\\employees\\admin",
+        "routes\\employees\\employees.js"
+    ]
 }

@@ -164,4 +164,5 @@ GitHub.sublime-settings
 config/db.js
 .history
 .idea
+.vscode
 .favorites.json

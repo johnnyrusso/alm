@@ -1,65 +1,104 @@
 <%- include ('../partials/staff_header') %>
-<div class="container mt-5 pt-5">
-  <div class="row">
-    <div class="col-xs-12 mt-5">
-      <h2 class="mx-auto">Timesheet for <%= firstName  %> <%= lastName %></h2>
+
+<div class="container border border-top shadow">
+
+  <div id="timesheet" class="mt-auto">
+    <div class="row info-header">
+      <div class="col info-header">
+        <%    if(typeof timesheet !== 'undefined') { %>
+        <h2><%= timesheet.employee_id %></h2>
+        <%}%>
+        <p class="text-center h3 display text-white">Timesheet for <%= firstName  %> <%= lastName %></p>
+      </div>
     </div>
-  </div>
-  <form action="./" method="POST" class="form mx-auto mt-5">
-    <input type="hidden" value="<%=email%>" name="email">
-    <div id="timesheet">
+    <div class="row">
+      <div class="col">
+        <p class="text-center text-black mt-5 misc-info h3 alert-info rounded">
+          Week Ending
+          <br>
+          <small class="text-muted"><%= moment(weekEnding).format('dddd, MMMM DD YYYY') %></small>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="text-center text-black mt-5 misc-info h3 alert-info rounded">
+          Today's Date
+          <br>
+          <small class="text-muted"><%= moment().format('dddd, MMMM DD YYYY') %></small>
+        </p>
+      </div>
+    </div>
 
-      <div v-for="(task, index) in taskForm" class="container">
-        <div class="form-row mx-auto" class="timesheet">
-          <div class="col-sm-2 col-md-6 form-group">
-            <label class="control-label" for="date_worked">Date</label>
-            <input v-model="taskForm[0].taskDate" id="datepicker" class="form-control" type="date"
-              name="timesheet[dateWorked]" placeholder="Enter Location" />
-             
-          </div>
-          <div class="col-md-6 form-group">
-            <label class="control-label" for="location_worked">Location</label>
-            <input v-model="taskForm[0].taskLocation" id="location_worked" class="form-control location-worked" type="text"
-              name="timesheet[location]" placeholder="Enter Location" />
-          </div>
+    <form action="./" method="POST" class="form mx-auto mt-5">
+      <input type="hidden" value="<%=email%>" name="email">
+      <!-- Location And Date -->
+      <div v-for="(location, i) in taskForm" class="mb-5">
+        <div class="form-row border mx-auto w-100 rounded-lg">
+          <label class="control-label w-100 text-light h6 timesheet" for="date_worked"><span class="ml-2">Date </span>
+            <span>
+              <i class="far fa-question-circle"></i>
+            </span>
+          </label>
+          <input id="datepicker" class="form-control w-100 date-worked timesheet" type="text" name="timesheet[dateWorked]" value="<%= moment().format('MM / DD / YYYY') %>" disabled />
+        </div><br>
+        <div class="form-row border mx-auto w-100 rounded-lg" class="timesheet">
 
-        </div>
-        <br><br>
-        <div v-for="(task, index) in taskInfo" class="form-row mx-auto timesheet tasks" id="tasks">
-          <div class="col-md-4 form-group">
-            <label class="control-label bg-secondary" for="task_name"><span class="font-weight-bold text-light">Task:
-                {{index}}</span></label>
-            <input v-model="taskInfo[index].taskName" class="form-control tasks task-names" type="text"
-              :name="'timesheet[tasks][' + index + '][taskName]'" placeholder="Task Performed..." />
-          </div>
-
-          <div class="col-md-4 form-group">
-            <label class="control-label" for="date_worked">Hours on Task</label>
-            <input v-model="taskInfo[index].taskHours" id="date_worked" class="form-control tasks task-hours"
-              type="number" :name="'timesheet[tasks][' + index + '][hours]'" placeholder="Hours..." />
-          </div>
-          <div class="col-md-4 form-group">
-            <label class="control-label" for="date_worked">Minutes on Task</label>
-            <input v-model="taskInfo[index].taskMinutes" id="date_worked" class="form-control tasks task-minutes"
-              type="number" :name="'timesheet[tasks][' + index + '][minutes]'" placeholder="Minutes..." />
-          </div>
-        </div>
-        <div class="col-md-12 mt-auto">
-          <div class="btn-group w-100" role="group" aria-label="Basic example">
-            <button @click="removeTask" type="button" class="btn btn-danger form-control">Delete</button>
-            <button @click="addNewTask" type="button" class="btn btn-primary form-control">Add Task</button>
-          </div>
+          <label class="control-label w-100 text-light h6 timesheet"><span class="ml-2">Location</span></label>
+          <input v-model="taskForm[0].taskLocation" id="location_worked" class="form-control w-100 timesheet location-worked" type="text" name="timesheet[location]" placeholder="Enter Location"
+            required />
         </div>
       </div>
-      <div class="col-md-2 mt-5">
-        <div class="row" role="group" aria-label="Basic example">
-          <button type="submit" class="btn btn-primary form-control">Submit</button>
-          <a href="#costumModal31" role="button" id="verify" class="btn btn-success" data-toggle="modal">Test</a>
+      <!--///-->
+
+      <div class="row location-header text-center w-100">
+        <div class="col">
+          <h3 class="display-3">
+            {{taskForm[0].taskLocation}}
+          </h3>
         </div>
       </div>
 
-      <div id="costumModal31" class="modal mt-5" data-easein="flash" tabindex="-1" role="dialog"
-        aria-labelledby="costumModalLabel" aria-hidden="true">
+      <!-- SECTION Task Inputs -->
+      <div v-for="(task, index) in taskInfo" class="form-row mx-auto mt-3 tasks w-100 justify-content-center" id="tasks">
+        <div class="form-row w-100">
+
+          <label class="control-label w-100 text-light h6 timesheet" for="task_name"><span class="ml-1 text-center w-100">Task {{index + 1}} ({{taskForm[0].taskLocation}})</span></label>
+          <input v-model="taskInfo[index].taskName" class="form-control w-100 mx-auto tasks timesheet task-names" type="text" :name="'timesheet[tasks][' + index + '][taskName]'"
+            placeholder="Task Performed..." required />
+        </div>
+
+        <div class="form-row border justify-content-end input-group">
+
+          <label class="control-label sub-label text-light h6 w-100 rounded sub-label" for="task_hours"><span class="ml-1 text-center">Hours</span></label>
+
+          <input v-model="taskInfo[index].taskHours" id="task_hours" class="input-group form-control tasks timesheet task-hours w-50" type="number" :name="'timesheet[tasks][' + index + '][hours]'"
+            placeholder="Hours..." />
+
+
+          <label class="control-label sub-label text-light h6 w-100 roundedsub-label" for="task_minutes"><span class="ml-1 text-center">Minutes</span></label>
+          <input v-model="taskInfo[index].taskMinutes" id="task_minutes" class="input-group form-control tasks timesheet task-minutes w-50" type="number"
+            :name="'timesheet[tasks][' + index + '][minutes]'" placeholder="Minutes..." />
+        </div>
+      </div>
+
+
+      <div class="form-row mt-5 mb-3">
+        <button @click="addNewTask" type="button" class="btn btn-success form-control w-75">Add Task</button>
+        <button @click="removeTask" type="button" class="btn btn-danger form-control w-25">X</button>
+      </div>
+      <!-- /// -->
+      <div class="form-row" role="group" aria-label="Basic example">
+        <button type="submit" class="btn btn-info form-control">Submit</button>
+      </div>
+      <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#verify_modal">
+        Verify
+      </button>
+
+
+
+
+      <div id="verify_modal" class="modal mt-5" data-easein="flash" tabindex="-1" role="dialog" aria-labelledby="costumModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -67,21 +106,79 @@
                 Timesheet
               </h4>
               <button type="button" class="close ml-5" data-dismiss="modal" aria-hidden="true">
-                ×
+
               </button>
 
 
             </div>
             <div class="modal-body">
-              <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
-                <tbody id="verify_table">
-                  <div v-for="(task, index) in taskInfo" class="form-row mx-auto timesheet tasks" id="tasks">
-                    {{task.taskLocation}}
-                  </div>
-                </tbody>
+              <ul class="list-unstyled">
+                <li>
+                  <span class="text-primary">Employee:</span>
+                  <span class="text-muted">
+                    <%= firstName %> <%= lastName %>
+                  </span>
+                </li>
+
+                <li>
+                  <span class="text-primary">
+                    Week Ending:
+                  </span>
+                  <span class="text-muted"><%= moment(weekEnding).format('dddd, MM DD yyyy') %></span>
+                </li>
+
+                <li>
+                  <span class="text-primary">Hours Worked:</span>
+                  <span class="text-muted">
+
+                  </span>
+                </li>
+                <li>
+                  <span class="text-primary">Pay:</span>
+                  <span class="text-muted">
+                    $400
+                  </span>
+                </li>
+
+                <br>
+
+                <span class="text-primary">Location</span>
 
 
-              </table>
+                <span class="text-center badge-info">
+                  {{taskForm[0].taskLocation}}
+                </span>
+
+
+
+                <li>
+                  <span class="text-primary">
+                    Tasks
+                  </span>
+                  at
+                  <span class="text-capitalize alert-warning">
+                    {{taskForm[0].taskLocation}}
+
+                  </span>
+
+
+
+                </li>
+
+                <div v-for="(task, index) in taskInfo" class="w-75">
+                  <ul class="list-unstyled">
+                    <li>
+                      {{taskForm[0].taskLocation}}
+
+                      <span class="text-muted">
+                    <li class="list-group-item">{{taskInfo[index].taskName}}</li>
+
+                    </span>
+                    </li>
+
+                </div>
+              </ul>
+            </ul>
             </div>
             <div class="modal-footer">
               <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">
@@ -97,36 +194,11 @@
     </form>
   </div>
 </div>
+</div>
+
+</div>
+</div>
 <%- include ('../partials/staff_footer') -%>
 <!-- <script src="/public/js/employees/components/timesheet.js"></script> -->
-<script type="text/javascript" src="/public/js/datePicker.js"></script>
-<script>
-  let timesheet = new Vue({
-    el: "#timesheet",
-    data: {
-      taskForm: [{
-        taskLocation: "",
-        taskDate: "",
-        taskName: "",
-        taskHours: "",
-        taskMinutes: ""
-      }],
-      taskInfo: [{
-        textValue: "",
-        taskName: "",
-        taskHours: "",
-        taskMinutes: ""
-      }]
-    },
-    methods: {
-      addNewTask() {
-        // this.taskInfo[index].value='';
-        this.taskInfo.push({})
-      },
-      removeTask() {
-        this.taskInfo.pop()
-      }
-    }
-  });
 
-</script>
+<script src="/public/js/newTimesheetVue.js"></script>

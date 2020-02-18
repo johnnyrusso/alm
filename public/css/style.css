@@ -1,22 +1,18 @@
-a{
-    width: 100%;
-    height: 300px;
-}
-
-img{
+img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     overflow: hidden;
 }
-.gallery-title
-{
+
+.gallery-title {
     font-size: 36px;
     color: #42B32F;
     text-align: center;
     font-weight: 500;
     margin-bottom: 70px;
 }
+
 .gallery-title:after {
     content: "";
     position: absolute;
@@ -25,8 +21,8 @@ img{
     height: 45px;
     border-bottom: 1px solid #5e5e5e;
 }
-.filter-button
-{
+
+.filter-button {
     font-size: 18px;
     border: 1px solid #42B32F;
     border-radius: 5px;
@@ -35,8 +31,8 @@ img{
     margin-bottom: 30px;
 
 }
-.filter-button:hover
-{
+
+.filter-button:hover {
     font-size: 18px;
     border: 1px solid #42B32F;
     border-radius: 5px;
@@ -45,39 +41,49 @@ img{
     background-color: #42B32F;
 
 }
-.filter-button.active
-{
+
+.filter-button.active {
     background-color: #42B32F;
     color: white;
 }
-.port-image
-{
+
+.port-image {
     width: 100%;
 }
 
-.gallery_product
-{
+.gallery_product {
     margin-bottom: 30px;
-	-webkit-animation-duration: 1s;
-            animation-duration: 1s;
-            -webkit-animation-fill-mode: both;
-            animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
 }
 
-.block{
+.block {
     opacity: 0;
 }
 
 @-webkit-keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
+
 @keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
+
 .fadeIn {
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
 }
-

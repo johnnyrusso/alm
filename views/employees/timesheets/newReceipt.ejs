@@ -1,0 +1,22 @@
+<%- include ('../partials/staff_header') %>
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <div class="col-xs-12 mt-5">
+            <h4 style="display:block" class="display text-center">Receipt for <%= firstName  %> <%= lastName %></h4>
+        </div>
+    </div>
+    <form action="./" enctype="multipart/form-data" method="POST" class="form mx-auto mt-5">
+        <input type="date" name="receiptDate">
+
+        <select name="receiptType" id="receipt_type">
+            <option>Purchase</option>
+            <option>Gas</option>
+        </select>
+
+        <input type="text" name="receiptType">
+
+        <input type="file" name="recieptImage" />
+        <input type="submit" value="Submit Receipts" />
+    </form>
+</div>
+<%- include ('../partials/staff_footer') %>
