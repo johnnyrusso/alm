@@ -29,7 +29,7 @@
     "mysql2": "latest",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "pm2": "^4.2.1",
+    "pm2": "^5.2.0",
     "underscore": "^1.9.2",
     "validator": "^12.1.0"
   },
